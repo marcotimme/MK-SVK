@@ -18,7 +18,7 @@ with open("service_account.json", "w") as f:
 
 creds = Credentials.from_service_account_file("service_account.json", scopes=SCOPES)
 gc = gspread.authorize(creds)
-SHEET_NAME = "PayPal Payments"
+SHEET_NAME = "Einzahlungen_und_Ausgaben"
 worksheet = gc.open(SHEET_NAME).sheet1
 
 # Transaktionscodes aus Sheet auslesen
