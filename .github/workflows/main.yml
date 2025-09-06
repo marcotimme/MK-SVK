@@ -15,4 +15,8 @@ jobs:
       - name: Install requirements
         run: pip install -r requirements.txt
       - name: Run script
+        env:
+          GSHEET_CREDENTIALS_JSON: ${{ secrets.GSHEET_CREDENTIALS_JSON }}
+          GMAIL_USER: ${{ secrets.GMAIL_USER }}
+          GMAIL_PASSWORD: ${{ secrets.GMAIL_PASSWORD }}
         run: python Update_MK.py
