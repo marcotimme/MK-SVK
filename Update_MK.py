@@ -85,7 +85,7 @@ for email_id in email_ids:
         nachricht = freitext_match.group(2).strip()
     else:
         nachricht = freitext_match.group(1).strip()
-    nachricht = nachricht.split('</').strip()
+    nachricht = nachricht.split('</')[0].strip()
     print(nachricht)
     kategorie = "Beitrag"
     if nachricht.lower().startswith("strafe"):
