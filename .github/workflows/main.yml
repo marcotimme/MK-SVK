@@ -2,6 +2,7 @@ name: Paypal Email Parse and Google Sheets Export
 on:
   #schedule:
    # - cron: '0 6 * * *'   # Täglich um 6 Uhr UTC
+  push:
   workflow_dispatch: {}
 jobs:
   run-script:
