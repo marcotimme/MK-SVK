@@ -47,7 +47,7 @@ datum_pattern = r"\b\d{1,2}\.\s*[A-Za-z]+\s*\d{4}\b"
 for email_id in email_ids:
     status, msg_data = mail.fetch(email_id, "(RFC822)")
     print(msg_data)
-    msg = email.message_from_bytes(msg_data[0])
+    msg = email.message_from_bytes(msg_data[0][1])
     subject = decode_header(msg["Subject"])
     if isinstance(subject, bytes):
         subject = subject.decode()
