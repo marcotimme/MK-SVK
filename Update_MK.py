@@ -33,7 +33,7 @@ mail.select("Paypal")
 print("Login erfolgreich")
 
 status, messages = mail.search(None, "ALL")
-email_ids = messages.split()
+email_ids = messages[0].split()
 print("Emails ausgelesen.")
 
 # Regex-Muster...
