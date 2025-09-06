@@ -45,8 +45,9 @@ freitext_pattern = r"(?i)(?<![a-zA-Z])(MK|Mannschaftskasse|@MK|Strafe)(?:[-\s]+(
 datum_pattern = r"\b\d{1,2}\.\s*[A-Za-z]+\s*\d{4}\b"
 
 for email_id in email_ids:
+    print("Neue Email")
     status, msg_data = mail.fetch(email_id, "(RFC822)")
-    print(msg_data)
+    #print(msg_data)
     msg = email.message_from_bytes(msg_data[0][1])
     subject = decode_header(msg["Subject"])
     if isinstance(subject, bytes):
@@ -75,6 +76,7 @@ for email_id in email_ids:
             datum = "Ungültiges Datum"
     else:
         datum = "Datum nicht gefunden"
+    print(datum)
     freitext_match = re.search(freitext_pattern, body)
     if not freitext_match:
         print(f"E-Mail ignoriert: kein MK/Strafe.")
@@ -83,7 +85,8 @@ for email_id in email_ids:
         nachricht = freitext_match.group(2).strip()
     else:
         nachricht = freitext_match.group(1).strip()
-    nachricht = nachricht.split('</')
+    nachricht = nachricht.split('</').strip()
+    print(nachricht)
     kategorie = "Beitrag"
     if nachricht.lower().startswith("strafe"):
         kategorie = "Strafe"
