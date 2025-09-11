@@ -21,3 +21,6 @@ jobs:
           GMAIL_USER: ${{ secrets.GMAIL_USER }}
           GMAIL_PASSWORD: ${{ secrets.GMAIL_PASSWORD }}
         run: python Update_MK.py
+      - name: Add summary to GitHub Actions
+        run: cat summary.md >> $GITHUB_STEP_SUMMARY
+
