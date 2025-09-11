@@ -117,13 +117,13 @@ for email_id in email_ids:
     added_rows.append((datum, name, kategorie, betrag, nachricht, transaktionscode))
 
 
-    # Summary schreiben
-    with open("summary.md", "w", encoding='utf-8') as f:
-        if added_rows:
-            f.write("# Update Mannschaftskasse\n\n")
-            f.write(f"{len(added_rows)} neue Einträge wurden hinzugefügt:\n\n")
-            for r in added_rows:
-                f.write(f"- {r} | {r[1]} | {r[2]} | {r[3]}€ | {r[4]} | {r[5]}\n")
+# Summary schreiben
+with open("summary.md", "w", encoding='utf-8') as f:
+    if added_rows:
+        f.write("# Update Mannschaftskasse\n\n")
+        f.write(f"{len(added_rows)} neue Einträge wurden hinzugefügt:\n\n")
+        for r in added_rows:
+            f.write(f"- {r} | {r[1]} | {r[2]} | {r[3]}€ | {r[4]} | {r[5]}\n")
         else:
             f.write("Keine neuen Einträge im Google Sheet.\n")
 mail.logout()
