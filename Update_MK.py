@@ -6,6 +6,9 @@ import os
 from datetime import datetime
 from google.oauth2.service_account import Credentials
 import gspread
+import sys
+
+added_rows = []
 
 # Service-Account-JSON als GitHub Secret (aus Umgebungsvariable im Workflow)
 GSHEET_CREDS_JSON = os.environ.get('GSHEET_CREDENTIALS_JSON')  # Der Wert ist die JSON als String
@@ -111,5 +114,17 @@ for email_id in email_ids:
     worksheet.append_row([datum, name, kategorie, betrag, nachricht, transaktionscode])
     print(f"Row added: Datum: {datum}, Name: {name}, Kategorie: {kategorie}, Betrag: {betrag}, Nachricht: {nachricht}, ID: {transaktionscode}")
     existing_codes.add(transaktionscode)
+    added_rows.append((datum, name, kategorie, betrag, nachricht, transaktionscode))
+
+
+    # Summary schreiben
+    with open("summary.md", "w", encoding='utf-8') as f:
+        if added_rows:
+            f.write("# Update Mannschaftskasse\n\n")
+            f.write(f"{len(added_rows)} neue Einträge wurden hinzugefügt:\n\n")
+            for r in added_rows:
+                f.write(f"- {r} | {r[1]} | {r[2]} | {r[3]}€ | {r[4]} | {r[5]}\n")
+        else:
+            f.write("Keine neuen Einträge im Google Sheet.\n")
 mail.logout()
 
