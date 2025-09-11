@@ -124,7 +124,7 @@ with open("summary.md", "w", encoding='utf-8') as f:
         f.write(f"{len(added_rows)} neue Einträge wurden hinzugefügt:\n\n")
         for r in added_rows:
             f.write(f"- {r} | {r[1]} | {r[2]} | {r[3]}€ | {r[4]} | {r[5]}\n")
-        else:
-            f.write("Keine neuen Einträge im Google Sheet.\n")
+    else:
+        f.write("Keine neuen Einträge im Google Sheet.\n")
 mail.logout()
 
