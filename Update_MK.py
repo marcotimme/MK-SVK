@@ -27,6 +27,7 @@ worksheet = gc.open(SHEET_NAME).sheet1
 # Transaktionscodes aus Sheet auslesen
 existing_codes = set(worksheet.col_values(6)[4:])  # 6. Spalte, ab Zeile 5
 existing_codes.add("14G77435X57269737")
+existing_codes.add("4TP41119075034023")
 print(existing_codes)
 
 # Gmail-Login (IMAP - Vorsicht: Passwort niemals hart coden)
