@@ -45,7 +45,7 @@ transaktionscode_pattern = r"\b[A-Z0-9]{17}\b"
 betrag_pattern = r"\b\d{1,3}(?:\.\d{3})*,\d{2}\s*€\s*EUR\b"
 name_pattern = r"(?:Mitteilung von|DEINE MITTEILUNG AN|Deine Mitteilung an )([^\d<:\n]+)"
 zahlungsmuster_pattern = r"Von dir bezahlt"
-freitext_pattern = r"(?i)(?<![a-zA-Z])(MK|Mannschaftskasse|@MK|Strafe)(?:[-\s]+(.+))?"
+freitext_pattern = r"(?i)(?<![a-zA-Z])(SVK|MK|Mannschaftskasse|@MK|Strafe)(?:[-\s]+(.+))?"
 datum_pattern = r"\b\d{1,2}\.\s*[A-Za-z]+\s*\d{4}\b"
 
 for email_id in email_ids:
