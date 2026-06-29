@@ -21,7 +21,7 @@ with open("service_account.json", "w") as f:
 
 creds = Credentials.from_service_account_file("service_account.json", scopes=SCOPES)
 gc = gspread.authorize(creds)
-SHEET_NAME = "Mannschaftskasse_2025_2026"
+SHEET_NAME = "Mannschaftskasse_2026_2027"
 worksheet = gc.open(SHEET_NAME).sheet1
 
 # Transaktionscodes aus Sheet auslesen
