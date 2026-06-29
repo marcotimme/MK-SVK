@@ -21,6 +21,22 @@ with open("service_account.json", "w") as f:
 
 creds = Credentials.from_service_account_file("service_account.json", scopes=SCOPES)
 gc = gspread.authorize(creds)
+
+#DEBUG
+# Nach dieser Zeile einfügen:
+# gc = gspread.authorize(creds)
+
+# Liste alle Spreadsheets auf
+try:
+    spreadsheet_list = gc.list_spreadsheet_files()
+    print("Verfügbare Spreadsheets:")
+    for sheet in spreadsheet_list:
+        print(f"  - {sheet['name']}")
+except Exception as e:
+    print(f"Fehler beim Auflisten: {e}")
+
+#DEBUG ENDE
+
 SHEET_NAME = "Mannschaftskasse_2026_2027"
 worksheet = gc.open(SHEET_NAME).sheet1
 
